@@ -9,6 +9,39 @@ import numpy as np
 from aa import NNStatFormatter
 import pickle
 
+
+data = pd.read_csv("Data.csv")
+
+data = data.drop(data[data["Waveform"] == "mwc"].index)
+data = data.drop(data[data["Waveform"] == "mww"].index)
+data = data.drop(data[data["Waveform"] == "mwr"].index)
+data = data.drop(data[data["Waveform"] == "mdl"].index)
+data = data.drop(data[data["Waveform"] == "m"].index)
+data = data.drop(data[data["Waveform"] == "mh"].index)
+data = data.drop(data[data["Waveform"] == "mwb"].index)
+data = data.drop(data[data["Waveform"] == "mw"].index)
+data = data.drop(data[data["Waveform"] == "mblg"].index)
+data = data.drop(data[data["Waveform"] == "mw_lg"].index)
+data = data.drop(data[data["Waveform"] == "mc"].index)
+data = data.drop(data[data["Waveform"] == "mlg"].index)
+data = data.drop(data[data["Waveform"] == "ms"].index)
+data = data.drop(data[data["Waveform"] == "mwp"].index)
+data = data.drop(data[data["Waveform"] == "ma"].index)
+data = data.drop(data[data["Waveform"] == "mb_lg"].index)
+data = data.drop(data[data["Waveform"] == "ms_20"].index)
+data = data.drop(data[data["Waveform"] == "mlr"].index)
+count = 0
+# for x in data:
+#     data["ID"] = count
+#     count += 1
+data = data.replace("ml", 1)
+data = data.replace("mb", 2)
+data = data.replace("md", 3)
+data["Drop"] = data["Unnamed: 0"]
+data.to_csv("RefinedData.csv")
+
+
+
 #%%
 data = pd.read_csv("RefinedData.csv")
 std_mag = []
